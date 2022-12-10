@@ -1,0 +1,47 @@
+#include<reg51.h>
+void delay(unsigned int time)
+{
+	int i,j;
+	for(i=0;i<time;i++)
+	for(j=0;j<922;j++);
+}
+void main()
+{
+	unsigned char temp[]={0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90};
+	int p,q;
+	while(1){
+	P3=0x01;
+	for(p=0;p<=2;p++)
+	{
+		P1=temp[2-p];
+		for(q=0;q<=9;q++)
+		{
+			P2=temp[9-q];
+			delay(100);
+		}
+	}
+	P3=0x00;
+	P3=0x02;
+	for(p=0;p<=2;p++)
+	{
+		P1=temp[2-p];
+		for(q=0;q<=9;q++)
+		{
+			P2=temp[9-q];
+			delay(100);
+		}
+	}
+	P3=0x00;
+	P3=0x04;
+	for(p=0;p<=1;p++)
+	{
+		P1=temp[1-p];
+		for(q=0;q<=9;q++)
+		{
+			P2=temp[9-q];
+			delay(100);
+		}
+	}
+}
+}
+	
